@@ -1,0 +1,78 @@
+﻿@model IS4439_Assignment.Models.Album
+@{
+    ViewData["Title"] = "Albums";
+}
+
+<!-- ##### Breadcumb Area Start ##### -->
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/Images/homeCover1.jpg);">
+    <div class="bradcumbContent">
+        <p>Browse through our albums selection</p>
+        <h2>Albums</h2>
+    </div>
+</section>
+<!-- ##### Breadcumb Area End ##### -->
+
+<!-- ##### Album Catagory Area Start ##### -->
+<section class="album-catagory section-padding-100-0">
+    <div class="container">
+    <div class="container text-center">
+                <h3>See anything you like?</h3>
+       
+                <a asp-controller="Order" asp-action="Index" class="btn oneMusic-btn btn-2 m-2">Order Now<i class="fa fa-angle-double-right"></i></a>
+        <br /><br />
+    </div>
+        <!--Allow users to filter albums based on genre or whether they contain explicit content-->
+        <h4>Filters:</h4>
+        <div style="display:flex;">
+            <div style="flex:1;">
+                <p>
+                    <a asp-controller="Album" asp-action="AlbumsOfExplicit" asp-route-id="false"><u>Click here to hide albums containing explicit content</u></a><br />
+                    <!--<a asp-controller="Home" asp-action="AlbumsOfExplicit" asp-route-id="true">Show explicit content albums only</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+
+                    <i>To filter albums by genre, click on the genre of any of the albums listed below. </i>
+                </p>
+            </div>
+            <div style="flex:1;">
+                <br />
+                <a asp-controller="Album" asp-action="Index">Remove filter</a>
+                <br />
+            </div>
+
+        </div>
+
+
+        <br /><br />
+        <h3>Click on any of the albums below to view more details</h3>
+        <div class="row oneMusic-albums">
+
+            <!--Populate the page with all of the albums available-->
+            @foreach (Album album in ViewBag.Albums)
+            {
+                <!-- Single Album -->
+                <div class="col-12 col-sm-4 col-md-3 col-lg-2 single-album-item t c p" style="height:350px;">
+                    <div class="single-album">
+                        <a asp-controller="Album" asp-action="SelectedAlbum" asp-route-id="@album.Title">
+                            <img src="@album.CoverImage">
+                            <div class="album-info">
+
+                                <h5>@album.Title</h5>
+
+                                <h6>@album.Artist</h6>
+                                <p>
+                                    <a asp-controller="Album" asp-action="AlbumsOfGenre" asp-route-id="@album.Genre">@album.Genre</a>
+                                    - @album.Year
+                                </p>
+                                @if (album.ExplicitContent == true)
+                                {
+                                    <p style="color:red;"><i>Contains explicit content</i></p>
+                                }
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>

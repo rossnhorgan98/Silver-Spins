@@ -1,0 +1,82 @@
+﻿@model IS4439_Assignment.Models.Album
+@{
+    ViewData["Title"] = "Add Albums";
+}
+
+<!-- ##### Breadcumb Area Start ##### -->
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/Images/homeCover1.jpg);">
+    <div class="bradcumbContent">
+
+        <h2>Add Albums</h2>
+    </div>
+</section>
+
+<!-- ##### Breadcumb Area End ##### -->
+<section class="album-catagory section-padding-100-0">
+    <div class="container">
+        <div class="row align-items-center">
+            @Html.ValidationSummary()
+        </div>
+
+        @if (Model == null)
+        {
+            <div class="row align-items-center">
+
+                @using (Html.BeginForm("CreateAlbum", "Album"))
+                {
+                    <p>
+                        @Html.Label("Title:")
+                        @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                        @Html.ValidationMessage("Title")
+                    </p>
+                    <p>
+                        @Html.Label("Artist:")
+                        @Html.TextBoxFor(model => model.Artist, new { @class = "form-control" })
+                    </p>
+                    <p>
+                        @Html.Label("Year Released:")
+                        @Html.TextBoxFor(model => model.Year, new { @class = "form-control" })
+                    </p>
+                    <p>
+                        @Html.Label("Genre:")
+                        @Html.DropDownListFor(model => model.Genre, new SelectList(Enum.GetValues(typeof(Genre))), "Select Genre", new { @class = "form-control" })
+                    </p>
+                    <p>
+                        @Html.Label("Length (in minutes):")
+                        @Html.TextBoxFor(model => model.Length, new { @class = "form-control" })
+                    </p>
+                    <p>
+                        @Html.Label("Contains Explicit Content:")
+                        @Html.CheckBoxFor(model => model.ExplicitContent, new { @class = "form-control" })
+                    </p>
+                    <p>
+                        @Html.Label("CD Price (€):")
+                        @Html.TextBoxFor(model => model.CDPrice, new { @class = "form-control" })
+                    </p>
+                    <p>
+                        @Html.Label("Vinyl Price (€):")
+                        @Html.TextBoxFor(model => model.VinylPrice, new { @class = "form-control" })
+                    </p>
+                    <p>
+                        @Html.Label("Cover Image reference:")
+                        @Html.TextBoxFor(model => model.CoverImage, new { @class = "form-control" })
+                    </p>
+                    <p>
+                        @Html.Label("Song List:")<br />
+                        @Html.TextAreaFor(model => model.SongList, new { style = "width: 1000px; height 1000px;" })
+                    </p>
+                    <br />
+                    <button type="submit" class="btn oneMusic-btn mt-30">Create Album</button>
+                    <br /><br />
+                }
+            </div>
+        }
+        else
+        {
+    <div class="row align-items-center">
+        <h1>@Model.Title by @Model.Artist has been added to the website.</h1><br />
+        <a asp-controller="Album" asp-action="CreateAlbum" class="btn oneMusic-btn m-2">Add another<i class="fa fa-angle-double-right"></i></a>
+    </div>
+        }
+    </div>
+</section>

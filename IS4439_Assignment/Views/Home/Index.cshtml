@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- ##### Hero Area Start ##### -->
+<section class="hero-area">
+    <div class="hero-slides owl-carousel">
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide d-flex align-items-center justify-content-center">
+            <!-- Slide Img -->
+            <div class="slide-img bg-img" style="background-image: url(/Images/homeCover1.jpg);"></div>
+            <!-- Slide Content -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="hero-slides-content text-center">
+                            <h6 data-animation="fadeInUp" data-delay="100ms">Welcome to</h6>
+                            <h2 data-animation="fadeInUp" data-delay="300ms">Silver Spins <span>Silver Spins</span></h2>
+                            <a data-animation="fadeInUp" data-delay="500ms" asp-controller="Album" asp-action="Index" class="btn oneMusic-btn mt-50">Browse <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ##### Hero Area End ##### -->
+
+<section class="latest-albums-area section-padding-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading style-2">
+                    
+                    <h2>About Us</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="ablums-text text-center mb-70">
+                    <p>
+                        Silver Spins is a new, up and coming ecommerce website based in the centre of Cork City, Ireland.
+                        We are dedicated to delivering you the best albums out there whether they be via compact disk or vinyl.
+                        <br />
+                        If you have any enquiries, feel free to contact us. Click below to go to our contact page.
+                    </p>
+                    <br />
+                    <br />
+                    <a asp-controller="Contact" asp-action="Index" class="btn oneMusic-btn btn-2 m-2">Contact Us<i class="fa fa-angle-double-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

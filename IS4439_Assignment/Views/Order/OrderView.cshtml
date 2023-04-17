@@ -1,0 +1,52 @@
+﻿@model IS4439_Assignment.Models.Order
+@{
+    ViewData["Title"] = "Order View";
+}
+
+<!-- ##### Breadcumb Area Start ##### -->
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/Images/orderCover.png);">
+    <div class="bradcumbContent">
+
+        <h2>View Orders</h2>
+    </div>
+</section>
+<!-- ##### Breadcumb Area End ##### -->
+
+<section class="album-catagory section-padding-100-0">
+
+    <div class="container">
+        <div class="row justify-content-center ">
+            <table class="customTable">
+                <tr>
+                    <th>ID</th>
+                    <th>Album</th>
+                    <th>Format</th>
+                    <th>Customer Name</th>
+                    <th> Email</th>
+                    <th>Phone Number</th>
+                    <th>Delivery Address</th>
+                </tr>
+                @foreach (Order o in ViewBag.Orders)
+                {
+                    <tr>
+                        <td>@o.OrderID</td>
+                        <td>
+                            <a asp-controller="Album" asp-action="SelectedAlbum" asp-route-id="@o.Album.Title">@o.Album.Title</a>
+                        </td>
+                        <td>@o.Format</td>
+                        <td>@o.Name</td>
+                        <td>@o.Email</td>
+                        <td>@o.PhoneNo</td>
+                        <td>@o.Address</td>
+                    </tr>
+                }
+            </table>
+            <br />
+            <br />
+            <br />
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<br />

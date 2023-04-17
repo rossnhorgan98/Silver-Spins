@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="wwwroot\Images\" />
+    <Folder Include="Views\Error\" />
+    <Folder Include="Views\Album\" />
+    <Folder Include="Views\Order\" />
+    <Folder Include="Views\Contact\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\App_Data\db.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="App_Data\db.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\db.xml" />
+  </ItemGroup>
+</Project>

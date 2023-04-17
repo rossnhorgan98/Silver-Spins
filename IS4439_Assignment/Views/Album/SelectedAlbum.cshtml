@@ -1,0 +1,53 @@
+﻿@model IS4439_Assignment.Models.Album
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+<!-- ##### Breadcumb Area Start ##### -->
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/Images/homeCover1.jpg);">
+    <div class="bradcumbContent">
+        <h1>@Model.Title</h1>
+        <h2>@Model.Artist</h2>
+
+    </div>
+</section>
+<!-- ##### Breadcumb Area End ##### -->
+<!-- ##### Album Catagory Area Start ##### -->
+<section class="album-catagory section-padding-100-0">
+    <div class="container text-center">
+
+        <div style="display: flex">
+            <div style="flex:1">
+                @if (Model.ExplicitContent == true)
+                {
+                    <img src="/Images/explicitContent.png" width="200" height="125" />
+                    <br /><br />
+                }
+
+                <img src="@Model.CoverImage" width="500" height="500" />
+                <br /><br /><br />
+                <a asp-controller="Order" asp-action="Index" class="btn oneMusic-btn m-2">Order Now<i class="fa fa-angle-double-right"></i></a>
+            </div>
+            <div style="flex:1">
+
+
+                <h3>
+                    @Model.Genre &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @Model.Year
+            </h3>
+            <h3>@Model.Length minutes</h3><br /><br />
+                <h3>Price:</h3>
+            <h3>CD: €@Model.CDPrice&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vinyl: €@Model.VinylPrice</h3>
+            <br /><br />
+            <h3>Track List:</h3>
+            <p style="white-space: pre-line;">
+                @Model.SongList
+            </p>
+        </div>
+    </div>
+
+
+</div>
+<br />
+<br />
+</section>

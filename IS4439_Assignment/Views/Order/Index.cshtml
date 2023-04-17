@@ -1,0 +1,87 @@
+﻿@model IS4439_Assignment.Models.Order
+@{
+    ViewData["Title"] = "Order";
+}
+
+<!-- ##### Breadcumb Area Start ##### -->
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/Images/orderCover.png);">
+    <div class="bradcumbContent">
+
+        <h2>Order</h2>
+    </div>
+</section>
+<!-- ##### Breadcumb Area End ##### -->
+
+<section class="album-catagory section-padding-100-0">
+    <div class="container">
+        <div class="row align-items-center">
+            @Html.ValidationSummary()
+        </div>
+
+        @if (Model == null)
+        {
+            <div class="row align-items-center">
+
+
+                @using (Html.BeginForm("Index", "Order"))
+                {
+                   <h3>Order Details</h3>
+                    <p>
+                        @Html.Label("Album:")
+                        @Html.DropDownListFor(model => model.Album.Title, new SelectList(ViewBag.albumList, "Title", "Title").OrderBy(l => l.Text), "Select Album", new { id = "ddlAlbum", @class = "form-control" })
+                    </p>
+                    <p>
+                        @Html.Label("Format:")<br />
+                        @Html.RadioButtonFor(model => model.Format, "CD", new { id = "rdoCD" }) @Html.Label("CD") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.Format, "Vinyl", new { id = "rdoVinyl" }) @Html.Label("Vinyl")
+                    </p>
+                    <br /><br />
+                    <h3>Customer Details</h3>
+                    <p>
+                        @Html.Label("Name")
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                    </p>
+                    <p>
+                        @Html.Label("Email Address:")
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                    </p>
+                    <p>
+                        @Html.Label("Phone Number:")
+                        @Html.TextBoxFor(model => model.PhoneNo, new { @class = "form-control" })
+                    </p>
+                    <p>
+                        @Html.Label("Home Address")
+                        @Html.TextAreaFor(model => model.Address, new { @class = "form-control" })
+                    </p>
+                    <br /><br />
+                    <h3>Payment Details</h3>
+                    <p>
+                        @Html.Label("Credit Card Number:")
+                        @Html.TextBoxFor(model => model.CardNo, new { maxlength = "16", @class = "form-control" })
+                    </p>
+                    <p>
+                        @Html.Label("Expiration Date:")
+                        @Html.TextBoxFor(model => model.ExpirationDate, new { maxlength = "7", @class = "form-control", placeholeder = "mm/yyyy" })
+                    </p>
+                    <p>
+                        @Html.Label("Security Number:")
+                        @Html.PasswordFor(model => model.SecNo, new { maxlength = "3", @class = "form-control", placeholder = "xxx" })
+                    </p>
+
+                    <button type="submit" class="btn oneMusic-btn btn-2 mt-30">Place Order</button>
+                    <br /><br />
+                }
+            </div>
+
+        }
+        else
+        {
+            <div class="row align-items-center">
+                <h1>Thanks for ordering @Model.Album.Title, @Model.Name! </h1><br />
+                <h2>Your order should arrive within the next 5-10 business days.</h2><br /><br /><br />
+                <a asp-controller="Order" asp-action="Index" class="btn oneMusic-btn m-2">Order another<i class="fa fa-angle-double-right"></i></a>
+            </div>
+        }
+
+    </div>
+</section>
